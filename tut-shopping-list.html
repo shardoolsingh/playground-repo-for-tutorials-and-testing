@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<section>
+		<h2>My Shopping List</h2>
+		<label for="inputText">Your Item: </label>
+		<input name="inputText" id="inputArea" />
+		<button id="addBtn">Add to List</button>
+
+		<ul id="ul">
+		</ul>
+	</section>
+
+	<script>
+		const inputArea = document.querySelector("#inputArea");
+		let inputText;
+		inputArea.addEventListener("keyup", () => {
+			console.log("you captured input");
+			inputText = inputArea.value;
+			console.log(inputText);
+		
+		});
+
+		const addBtn = document.querySelector("#addBtn");
+		addBtn.addEventListener("click", () => {
+			const list = document.createElement("li");
+			list.textContent = inputText;
+
+			const removeBtn = document.createElement("button");
+			removeBtn.textContent = "remove";
+			list.appendChild(removeBtn);
+			const ul = document.querySelector("#ul");
+			ul.appendChild(list);
+
+			removeBtn.addEventListener("click", () => {
+				list.remove();
+			});
+		});
+		
+	</script>
+</body>
+</html>
